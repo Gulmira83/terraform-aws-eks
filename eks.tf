@@ -1,7 +1,3 @@
-#data "aws_eks_cluster" "cluster" {
-#  name = module.my-cluster.cluster_id
-#}
-
 # Create a role for eks-cluster. It's required . Take an example from terraform.io 
 # and adjust it for your needs (change name )
 
@@ -48,7 +44,7 @@ resource "aws_eks_cluster" "eks_master" {
 
   vpc_config {
     subnet_ids = "${var.subnet_ids}"
-    #security_group_ids = "${var.security_group_ids}"
+    security_group_ids = "${var.security_group_ids}"
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.

@@ -1,40 +1,49 @@
-variable "google_project_id" {
-  description = "- (Required)  Google account project id."
+variable "subnet_ids" {
+    type = "list"
+    description = "– (Required) List of subnet IDs. "
 }
-variable "google_region" {
-  type = "string"
-  description = "- (Required) Google region where the cluster will be deployed."
+
+variable "security_group_ids" {
+    type = "list"
+    description = "– (Required) List of security group"
 }
+
+variable "ssh_key_location" {
+    type = "string"
+    description = "- (Required) EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group"
+}
+
+variable "cluster_name" {
+    type = "string"
+    description = "- (Required) Name of the EKS Cluster."
+}
+
+variable "instance_type" {
+    type = "string"
+    description = "- (Required) Set of instance types associated with the EKS Node Group. Defaults to t3.medium"
+}
+
+variable "node_desired_capacity" {
+    type = "string"
+    description = "- (Required) Desired number of worker nodes"
+}
+
+variable "node_min_size" {
+    type = "string"
+    description = "(Required) Minimum number of worker nodes"
+}
+
+variable "node_max_size" {
+    type = "string"
+    description = " - (Required) Maximum number of worker nodes"
+}
+
 variable "cluster_version" {
   type = "string"
-  description = "- (Required) Version of the cluster."
-}
-variable "cluster_node_count" {
-  type = "string"
-  description = "- (Required) Number of nodes for the cluster."
-}
-variable "google_credentials" {
-  type = "string"
-  description = "- (Required) your google service account `example.json`"
-}
-variable "cluster_network" {
-  type = "string"
-  default = "default"
-  description = "- (Optional) The name or self_link of the Google Compute Engine network to which the cluster is connected. For Shared VPC, set this to the self link of the shared network."
-}
-variable "cluster_name" {
-  type = "string"
-  description = "- (Required) The name of the cluster, unique within the project and location."
+  description = "- (Required) Version of the cluster"
 }
 
-variable "subnetwork" {
-  type = "string"
-  default = "default"
-  description = "- (Optional) The name or self_link of the Google Compute Engine subnetwork in which the cluster's instances are launched."
-}
-
-variable "machine_type" {
-  type = "string"
-  default = "n1-standard-2"
-  description = "- (Optional) The name of a Google Compute Engine machine type. Defaults to n1-standard-1. "
+variable "region" {
+    type = "string"
+    description = "- (Required) region of the cluster"
 }
