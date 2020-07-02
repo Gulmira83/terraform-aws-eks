@@ -21,7 +21,7 @@ To be able to use following terraform module please follow the documentation.
 Your `main.tf` should look like this
 ```
 module "cluster-eks" {
-  source = ""
+  source = "fuchicorp/eks/aws"
   subnet_ids = ["subnet-", "subnet-"]
   region = "us-east-1"
   ssh_key_location = "${file("~/.ssh/id_rsa.pub")}"
@@ -42,8 +42,8 @@ terraform init
 ```
 In order to authenticate to the cluster you need to export credentials. Run this commands
 ```
-export AWS_ACCESS_KEY_ID="anaccesskey"
-export AWS_SECRET_ACCESS_KEY="asecretkey"
+export AWS_ACCESS_KEY_ID="accesskey"
+export AWS_SECRET_ACCESS_KEY="secretkey"
 export AWS_DEFAULT_REGION="us-west-2"
 terraform plan
 ```
